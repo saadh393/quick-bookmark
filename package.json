@@ -1,9 +1,9 @@
 {
-  "name": "vscode-favorites",
-  "displayName": "favorites",
-  "description": "Mark resources (files or folders, local and remote) as favorites, so they can be easily accessed.",
+  "name": "quick-bookmark",
+  "displayName": "Quick Bookmark",
+  "description": "Bookmark files and folders, group them into folders, and access them quickly.",
   "version": "1.11.0",
-  "publisher": "howardzuo",
+  "publisher": "saadh393",
   "engines": {
     "vscode": "^1.68.0"
   },
@@ -17,15 +17,15 @@
   "categories": [
     "Other"
   ],
-  "icon": "images/favorites.png",
+  "icon": "images/quick-bookmark.png",
   "bugs": {
     "url": "https://github.com/leftstick/vscode-favorites/issues",
     "email": "leftstick@qq.com"
   },
-  "homepage": "https://github.com/leftstick/vscode-favorites/blob/master/README.md",
+  "homepage": "https://github.com/saadh393/quick-bookmark/blob/master/README.md",
   "repository": {
     "type": "git",
-    "url": "https://github.com/leftstick/vscode-favorites.git"
+    "url": "https://github.com/saadh393/quick-bookmark.git"
   },
   "activationEvents": [
     "onCommand:favorites.addToFavorites",

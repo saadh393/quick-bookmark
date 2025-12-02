@@ -1,56 +1,50 @@
-# vscode-favorites
+# Quick Bookmark
 
-[![vscode version][vs-image]][vs-url]
-![][install-url]
-![][rate-url]
-![][license-url]
+Quickly bookmark files and folders (local or remote), organize them into folders and groups, and open them from a dedicated view.
 
-An extension that lets the developer mark resources (files or folders) as favorites, so they can be easily accessed.
+This project is a fork of [howardzuo/vscode-favorites](https://github.com/leftstick/vscode-favorites). Thanks to Howard Zuo and the contributors to the original extension.
 
-![](https://raw.githubusercontent.com/leftstick/vscode-favorites/master/images/preview.gif)
+![Quick Bookmark preview](images/preview.gif)
+
+## Features
+
+- Bookmark files or folders from the Explorer or editor context menu.
+- Organize bookmarks into custom folders inside each group; pick the target folder when adding.
+- Dedicated Favorites view with commands to open, reveal in OS/side bar, reorder, and manage folders.
+- Works in single- and multi-root workspaces and supports remote resources.
 
 ## Install
 
-Launch VS Code Quick Open (`cmd`/`ctrl` + `p`), paste the following command, and press Enter.
-
-```
-ext install howardzuo.vscode-favorites
-```
+- From the Marketplace (once published): `ext install <your-publisher>.quick-bookmark`
+- Or install a packaged VSIX locally:
+  1) `npm install && npm run package`
+  2) In VS Code, run “Extensions: Install from VSIX...” and choose the generated `.vsix`.
 
 ## Usage
 
-An **Add to Favorites** command in Explorer's context menu saves links to your favorite files or folders into your _*`XYZ`*_`.code-workspace` file if you are using one, else into the `.vscode/settings.json` file of your root folder.
+- Right-click any file or folder and choose **Add to Favorites**.
+- Choose a destination folder (or root) inside the current group; the bookmark is stored in your workspace settings or `.code-workspace`.
+- Open the **Favorites** view to access bookmarks quickly; use context menus to open, reveal, reorder, or remove items.
+- Create, rename, or delete favorites folders from the view title actions; switch groups via command palette commands.
 
-Your favorites are listed in a separate view and can be quickly accessed from there.
+## Configuration
 
-### Configuration
-
-```javascript
+```json
 {
-    "favorites.resources": [], // resources path you prefer to mark
-    "favorites.sortOrder": "ASC", // DESC, MANUAL
-    "favorites.saveSeparated": false // whether to use an extra config file
-    "favorites.groups": ["Default"], // the groups you have created
-    "favorites.currentGroup": "Default" // determine the current using group
+  "favorites.resources": [],          // Resources you have bookmarked
+  "favorites.sortOrder": "ASC",       // ASC, DESC, MANUAL
+  "favorites.saveSeparated": false,   // Store config in an extra .vscfavoriterc file
+  "favorites.groups": ["Default"],    // All groups in the workspace
+  "favorites.currentGroup": "Default" // The group currently in use
 }
 ```
 
-> You normally don't need to modify this config manually. Use context menus instead.
+> These settings are normally managed through the UI; you rarely need to edit them manually.
 
-### Favorite folders
+## Credits
 
-Use the **Create Favorites Folder** action in the Favorites view to add collapsible folders per group. When adding a favorite you'll be prompted to choose a target folder (or the root). Folder items can be renamed or deleted from their context menu; deleting a folder also removes its contents.
+Built on top of the original **vscode-favorites** by Howard Zuo and contributors.
 
-## Changelog
+## License
 
-[Changelog on Marketplace](https://marketplace.visualstudio.com/items/howardzuo.vscode-favorites/changelog)
-
-## LICENSE
-
-[GPL v3 License](https://raw.githubusercontent.com/leftstick/vscode-favorites/master/LICENSE)
-
-[vs-url]: https://marketplace.visualstudio.com/items?itemName=howardzuo.vscode-favorites
-[vs-image]: https://img.shields.io/visual-studio-marketplace/v/howardzuo.vscode-favorites
-[install-url]: https://img.shields.io/visual-studio-marketplace/i/howardzuo.vscode-favorites
-[rate-url]: https://img.shields.io/visual-studio-marketplace/r/howardzuo.vscode-favorites
-[license-url]: https://img.shields.io/github/license/leftstick/vscode-favorites
+[GPL v3 License](LICENSE)

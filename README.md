@@ -37,6 +37,10 @@ Your favorites are listed in a separate view and can be quickly accessed from th
 
 > You normally don't need to modify this config manually. Use context menus instead.
 
+### Favorite folders
+
+Use the **Create Favorites Folder** action in the Favorites view to add collapsible folders per group. When adding a favorite you'll be prompted to choose a target folder (or the root). Folder items can be renamed or deleted from their context menu; deleting a folder also removes its contents.
+
 ## Changelog
 
 [Changelog on Marketplace](https://marketplace.visualstudio.com/items/howardzuo.vscode-favorites/changelog)

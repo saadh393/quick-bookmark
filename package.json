@@ -133,6 +133,11 @@
           "command": "favorites.group.newGroup",
           "when": "view in ext:allFavoriteViews",
           "group": "navigation"
+        },
+        {
+          "command": "favorites.folder.create",
+          "when": "view in ext:allFavoriteViews",
+          "group": "navigation"
         }
       ],
       "view/item/context": [
@@ -185,6 +190,16 @@
           "command": "favorites.moveToBottom",
           "when": "view in ext:allFavoriteViews && viewItem =~ /resource(\\.dir)?$/",
           "group": "sort@4"
+        },
+        {
+          "command": "favorites.folder.rename",
+          "when": "view in ext:allFavoriteViews && viewItem == favorite.folder",
+          "group": "operation"
+        },
+        {
+          "command": "favorites.folder.delete",
+          "when": "view in ext:allFavoriteViews && viewItem == favorite.folder",
+          "group": "operation"
         }
       ],
       "commandPalette": [
@@ -231,6 +246,14 @@
         {
           "command": "favorites.moveToBottom",
           "when": "false"
+        },
+        {
+          "command": "favorites.folder.rename",
+          "when": "false"
+        },
+        {
+          "command": "favorites.folder.delete",
+          "when": "false"
         }
       ]
     },
@@ -263,6 +286,21 @@
           "dark": "images/new_group_black.svg",
           "light": "images/new_group_light.svg"
         }
+      },
+      {
+        "command": "favorites.folder.create",
+        "title": "%command.favorites.folder.create%",
+        "icon": "$(new-folder)"
+      },
+      {
+        "command": "favorites.folder.rename",
+        "title": "%command.favorites.folder.rename%",
+        "icon": "$(edit)"
+      },
+      {
+        "command": "favorites.folder.delete",
+        "title": "%command.favorites.folder.delete%",
+        "icon": "$(trash)"
       },
       {
         "command": "favorites.addToFavorites",

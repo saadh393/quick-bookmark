@@ -1,8 +1,8 @@
 import * as vscode from 'vscode'
-import { isMultiRoots, getSingleRootPath, getCurrentResources } from '../helper/util'
+import { isMultiRoots, getSingleRootPath, getCurrentResources, createFavoriteId } from '../helper/util'
 import configMgr from '../helper/configMgr'
 import { DEFAULT_GROUP } from '../enum'
-import { ItemInSettingsJson } from '../model'
+import { FavoriteFolderInSettings, ItemInSettingsJson } from '../model'
 
 export function addToFavorites() {
   return vscode.commands.registerCommand('favorites.addToFavorites', async (fileUri?: vscode.Uri) => {
@@ -27,7 +27,34 @@ export function addToFavorites() {
 
     const currentGroup = (configMgr.get('currentGroup') as string) || DEFAULT_GROUP
 
-    if (previousResources.some((r) => r.filePath === newResource && r.group === currentGroup)) {
+    const folders = (previousResources as ItemInSettingsJson[]).filter(
+      (r) => r.type === 'folder' && r.group === currentGroup
+    ) as FavoriteFolderInSettings[]
+
+    let targetFolderId: string | undefined
+    if (folders.length) {
+      const pick = await vscode.window.showQuickPick(
+        [{ label: 'Add to root', id: '' }].concat(folders.map((folder) => ({ label: folder.name, id: folder.id }))),
+        {
+          placeHolder: 'Select a favorites folder (or choose Add to root)',
+        }
+      )
+
+      if (!pick) {
+        return
+      }
+      targetFolderId = pick.id || undefined
+    }
+
+    if (
+      previousResources.some(
+        (r) =>
+          r.type === 'resource' &&
+          r.filePath === newResource &&
+          r.group === currentGroup &&
+          r.parentId === targetFolderId
+      )
+    ) {
       return
     }
 
@@ -35,7 +62,13 @@ export function addToFavorites() {
       .save(
         'resources',
         previousResources.concat([
-          { filePath: newResource, group: currentGroup },
+          {
+            id: createFavoriteId(),
+            filePath: newResource,
+            group: currentGroup,
+            type: 'resource',
+            parentId: targetFolderId,
+          },
         ] as Array<ItemInSettingsJson>)
       )
       .catch(console.warn)

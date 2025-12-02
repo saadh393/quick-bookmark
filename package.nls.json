@@ -14,5 +14,8 @@
   "command.favorites.openToSide": "Open to the Side",
   "command.favorites.changeGroup": "Change Current Group",
   "command.favorites.newGroup": "Create New Group",
+  "command.favorites.folder.create": "Create Favorites Folder",
+  "command.favorites.folder.rename": "Rename Favorites Folder",
+  "command.favorites.folder.delete": "Delete Favorites Folder",
   "view.favorites.title": "Favorites"
 }

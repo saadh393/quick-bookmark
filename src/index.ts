@@ -7,6 +7,9 @@ import configMgr from './helper/configMgr'
 import {
   addToFavorites,
   addNewGroup,
+  createFolder,
+  renameFolder,
+  deleteFolder,
   deleteFavorite,
   moveUp,
   moveDown,
@@ -73,6 +76,9 @@ export function activate(context: vscode.ExtensionContext) {
   context.subscriptions.push(toggleSort(favoritesProvider))
   context.subscriptions.push(changeGroup(favoritesProvider))
   context.subscriptions.push(addNewGroup(favoritesProvider))
+  context.subscriptions.push(createFolder(favoritesProvider))
+  context.subscriptions.push(renameFolder(favoritesProvider))
+  context.subscriptions.push(deleteFolder(favoritesProvider))
 }
 
 // this method is called when your extension is deactivated

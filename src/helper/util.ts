@@ -1,6 +1,6 @@
 import * as vscode from 'vscode'
 import * as path from 'path'
-import { ItemInSettingsJson } from '../model'
+import { FavoriteFolderInSettings, FavoriteResourceInSettings, ItemInSettingsJson } from '../model'
 import { DEFAULT_GROUP } from '../enum'
 import configMgr from './configMgr'
 import type { GitExtension, Repository, API } from '../git'
@@ -27,11 +27,15 @@ export function pathResolve(filePath: string) {
 export function getCurrentResources(): Array<ItemInSettingsJson> {
   const resources = (configMgr.get('resources') as Array<ItemInSettingsJson | string>) || []
   const newResources: Array<ItemInSettingsJson> = resources.map((item) => {
-    if (typeof item == 'string') {
-      return { filePath: item, group: DEFAULT_GROUP } as ItemInSettingsJson
-    } else {
-      return item
+    if (typeof item === 'string') {
+      return { filePath: item, group: DEFAULT_GROUP, type: 'resource' } as FavoriteResourceInSettings
     }
+
+    if (!('type' in item)) {
+      return { ...(item as FavoriteResourceInSettings), type: 'resource' }
+    }
+
+    return item
   })
   return newResources
 }
@@ -80,4 +84,8 @@ export function getGitBranchName(): string | null {
     return null
   }
   return repo.state.HEAD.name
+}
+
+export function createFavoriteId(): string {
+  return `fav_${Date.now()}_${Math.random().toString(16).slice(2)}`
 }

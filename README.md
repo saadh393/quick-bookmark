@@ -4,7 +4,7 @@ Quickly bookmark files and folders (local or remote), organize them into folders
 
 This project is a fork of [howardzuo/vscode-favorites](https://github.com/leftstick/vscode-favorites). Thanks to Howard Zuo and the contributors to the original extension.
 
-![Quick Bookmark preview](images/preview.gif)
+![Quick Bookmark preview](https://github.com/saadh393/quick-bookmark/blob/master/images/preview.gif?raw=true)
 
 ## Features
 
@@ -17,8 +17,8 @@ This project is a fork of [howardzuo/vscode-favorites](https://github.com/leftst
 
 - From the Marketplace (once published): `ext install <your-publisher>.quick-bookmark`
 - Or install a packaged VSIX locally:
-  1) `npm install && npm run package`
-  2) In VS Code, run “Extensions: Install from VSIX...” and choose the generated `.vsix`.
+  1. `npm install && npm run package`
+  2. In VS Code, run “Extensions: Install from VSIX...” and choose the generated `.vsix`.
 
 ## Usage
 
@@ -31,10 +31,10 @@ This project is a fork of [howardzuo/vscode-favorites](https://github.com/leftst
 
 ```json
 {
-  "favorites.resources": [],          // Resources you have bookmarked
-  "favorites.sortOrder": "ASC",       // ASC, DESC, MANUAL
-  "favorites.saveSeparated": false,   // Store config in an extra .vscfavoriterc file
-  "favorites.groups": ["Default"],    // All groups in the workspace
+  "favorites.resources": [], // Resources you have bookmarked
+  "favorites.sortOrder": "ASC", // ASC, DESC, MANUAL
+  "favorites.saveSeparated": false, // Store config in an extra .vscfavoriterc file
+  "favorites.groups": ["Default"], // All groups in the workspace
   "favorites.currentGroup": "Default" // The group currently in use
 }
 ```

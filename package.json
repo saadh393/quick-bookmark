@@ -2,7 +2,7 @@
   "name": "quick-bookmark",
   "displayName": "Quick Bookmark",
   "description": "Bookmark files and folders, group them into folders, and access them quickly.",
-  "version": "1.11.0",
+  "version": "1.11.1",
   "publisher": "saadh393",
   "engines": {
     "vscode": "^1.68.0"
